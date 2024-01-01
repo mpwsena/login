@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#0001</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(to right, #b300ff, #0080ff);
+            color: #fff;
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .login-container {
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-color: #ffffff;
+            border-width: 3px;
+            border-style: solid;
+            border-radius: 20px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 470px;
+            height: 439px;
+            user-select: none;
+            overflow: hidden;
+        }
+
+        .login-container::before,
+        .login-container::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            animation: neonGlow 2s linear infinite alternate;
+        }
+
+        .login-container::before {
+            background: linear-gradient(to right, #ff00e0, #3d00ff);
+            z-index: -1;
+        }
+
+        .login-container::after {
+            background: linear-gradient(to right, #3d00ff, #ff00e0);
+            z-index: -2;
+        }
+
+        @keyframes neonGlow {
+            0% {
+                filter: blur(10px);
+            }
+
+            100% {
+                filter: blur(20px);
+            }
+        }
+
+        .login-container h2 {
+            color: #ffffff;
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-align: start;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #ffffff;
+        }
+
+        .form-group input {
+            margin-top: 8px;
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ff6666;
+            border-radius: 4px;
+            background-color: rgba(0, 0, 0, 0.5);
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+            color: #ffffff;
+            font-family: 'Poppins';
+        }
+
+        .form-group input:focus {
+            border: 2px solid #ff6666;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+        }
+
+        .login-btn {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: block;
+            width: 30%;
+        }
+
+        .login-btn:hover {
+            background-color: #45a049;
+        }
+
+        .form-group.forgot-password {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            color: #ccc;
+            text-align: right;
+            margin-top: 30px;
+            text-decoration: none;
+            user-select: none;
+        }
+
+        #senha {
+            text-decoration: none;
+            color: #ffffff;
+            transition: color 0.3s ease;
+        }
+
+        #senha:hover {
+            color: #4CAF50;
+        }
+
+        /* Rodapé */
+        .footer {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        .texto-rodape {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            margin: auto;
+            opacity: 25%;
+            font-size: 18px;
+            font-family: 'Poppins'
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container">
+        <h2 id="greeting"></h2>
+        <form>
+            <div class="form-group">
+                <label for="username">Usuário:</label>
+                <input type="text" id="username" class="form-control" maxlength="20" required autocomplete="off"
+                    spellcheck="false">
+            </div>
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" class="form-control" required>
+            </div>
+            <div class="form-group forgot-password">
+                <button type="submit" class="btn btn-primary login-btn">Entrar</button>
+                <a href="#" id="senha">Esqueci a senha</a>
+            </div>
+        </form>
+        <div class="footer">
+            <p class="texto-rodape">github/mpwsena</p>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <script>
+        function getGreeting() {
+            var now = new Date();
+            var hours = now.getHours();
+            if (hours >= 6 && hours < 12) {
+                return "Bom dia!";
+            } else if (hours >= 12 && hours < 18) {
+                return "Boa tarde!";
+            } else {
+                return "Boa noite!";
+            }
+        }
+
+        document.getElementById("greeting").innerText = getGreeting();
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var usernameInput = document.getElementById("username");
+
+            usernameInput.addEventListener("input", function () {
+                if (this.value.length === 0) {
+                    this.style.borderColor = "#ff6666";
+                } else {
+                    this.style.borderColor = "#45a049";
+                }
+                this.value = this.value.replace(/[^\w]/g, "").toLowerCase();
+            });
+
+            var passwordInput = document.getElementById("password");
+
+            passwordInput.addEventListener("input", function () {
+                if (this.value.length === 0) {
+                    this.style.borderColor = "#ff6666";
+                } else {
+                    this.style.borderColor = "#45a049";
+                }
+            });
+
+            passwordInput.addEventListener("keydown", function (e) {
+                if (e.key === " ") {
+                    e.preventDefault();
+                }
+
+                if (this.value.length >= 20 && e.key !== "Backspace") {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
