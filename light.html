@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Profissional</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Seu CSS personalizado -->
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light Grayish */
+            color: #495057; /* Dark Gray */
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+
+        .login-container {
+            background-color: #fff; /* White */
+            border-radius: 8px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 470px;
+            user-select: none;
+        }
+
+
+        .login-container h2 {
+            color: #495057; /* Dark Gray */
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-align: start;
+        }
+
+
+        .form-group label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #6c757d; /* Gray */
+        }
+
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ced4da; /* Light Gray */
+            border-radius: 4px;
+            background-color: #f1f3f5; /* Light Gray */
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            color: #495057; /* Dark Gray */
+        }
+
+
+        .form-group input:focus {
+            border-color: #007bff; /* Blue */
+            box-shadow: 0px 0px 10px rgba(0, 123, 255, 0.1);
+            background-color: #f1f3f5; /* Light Gray */
+            color: #495057; /* Dark Gray */
+        }
+
+
+        .show-password-icon {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #6c757d; /* Gray */
+        }
+
+
+        .login-btn {
+            background-color: #007bff; /* Blue */
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: block;
+            width: 30%;
+        }
+
+
+        .login-btn:hover {
+            background-color: #0056b3; /* Darker Blue */
+        }
+
+
+        .form-group.forgot-password {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            color: #6c757d; /* Gray */
+            text-align: right;
+            margin-top: 30px;
+            text-decoration: none;
+            user-select: none;
+        }
+
+
+        #senha {
+            text-decoration: none;
+            color: #6c757d; /* Gray */
+            transition: color 0.3s ease;
+        }
+
+
+        #senha:hover {
+            color: #0056b3; /* Darker Blue */
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Login</h2>
+    <form id="login-form">
+        <div class="form-group">
+            <label for="username">Usuário:</label>
+            <input type="text" id="username" class="form-control" required autocomplete="off" spellcheck="false">
+        </div>
+        <div class="form-group">
+            <label for="password">Senha:</label>
+            <div class="position-relative">
+                <input type="password" id="password" class="form-control" required>
+                <span class="show-password-icon" onclick="togglePasswordVisibility()">
+                    <i class="fas fa-eye"></i>
+                </span>
+            </div>
+        </div>
+        <div class="form-group custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="remember-me">
+            <label class="custom-control-label" for="remember-me">Lembrar-me</label>
+        </div>
+        <div class="form-group forgot-password">
+            <button type="submit" class="btn btn-primary login-btn">Entrar</button>
+            <a href="#" id="senha">Esqueci a senha</a>
+        </div>
+    </form>
+</div>
+
+<!-- Bootstrap e jQuery scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- FontAwesome Icons -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+
+<script>
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("password");
+        var icon = document.querySelector('.show-password-icon i');
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        } else {
+            passwordInput.type = "password";
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var rememberMeCheckbox = document.getElementById("remember-me");
+        rememberMeCheckbox.checked = localStorage.getItem("rememberMe") === "true";
+
+        document.getElementById("login-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+            // Aqui você colocará a sua lógica de login
+
+            var usernameInput = document.getElementById("username");
+            if (rememberMeCheckbox.checked) {
+                localStorage.setItem("rememberMe", "true");
+                localStorage.setItem("username", usernameInput.value);
+            } else {
+                localStorage.removeItem("rememberMe");
+                localStorage.removeItem("username");
+            }
+
+            // Simulação de login
+            alert('Login simulado: ' + usernameInput.value);
+        });
+
+        var savedUsername = localStorage.getItem("username");
+        if(savedUsername) {
+            document.getElementById("username").value = savedUsername;
+        }
+    });
+</script>
+
+</body>
+</html>
