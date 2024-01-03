@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Profissional</title>
+
+    <!-- Inclua as folhas de estilo do Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Inclua as folhas de estilo do FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #4b4d41; /* Dark Background */
+            color: #f8f8f2; /* Light Foreground */
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #272822; /* Dark Background */
+            border-radius: 8px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 470px;
+            user-select: none;
+        }
+
+        .login-container h2 {
+            color: #a6e22e; /* Green */
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-align: start;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #f92672; /* Red */
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #75715e; /* Brownish Yellow */
+            border-radius: 4px;
+            background-color: #272822; /* Dark Background */
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            color: #f8f8f2; /* Light Foreground */
+        }
+
+        .form-group input:focus {
+            border-color: #66d9ef; /* Light Blue */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            background-color: #272822; /* Dark Background */
+            color: #f8f8f2; /* Light Foreground */
+        }
+
+        .show-password-icon {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #fd971f; /* Orange */
+        }
+
+        .login-btn {
+            background-color: #a6e22e; /* Green */
+            color: #f8f8f2; /* Light Foreground */
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: block;
+            width: 30%;
+        }
+
+        .login-btn:hover {
+            background-color: #75715e; /* Brownish Yellow */
+        }
+
+        .form-group.forgot-password {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            color: #75715e; /* Brownish Yellow */
+            text-align: right;
+            margin-top: 30px;
+            text-decoration: none;
+            user-select: none;
+        }
+
+        #senha {
+            text-decoration: none;
+            color: #75715e; /* Brownish Yellow */
+            transition: color 0.3s ease;
+        }
+
+        #senha:hover {
+            color: #66d9ef; /* Light Blue */
+        }
+
+        .svg-inline--fa, .fa-eye {
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Faça seu login! :D</h2>
+    <form>
+        <div class="form-group">
+            <label for="username">Usuário:</label>
+            <input type="text" id="username" class="form-control" required autocomplete="off" spellcheck="false">
+        </div>
+        <div class="form-group">
+            <label for="password">Senha:</label>
+            <div class="position-relative">
+                <input type="password" id="password" class="form-control" required>
+                <span class="show-password-icon" onclick="togglePasswordVisibility()">
+                    <i class="fas fa-eye"></i>
+                </span>
+            </div>
+        </div>
+        <div class="form-group forgot-password">
+            <button type="submit" class="btn btn-primary login-btn">Entrar</button>
+            <a href="#" id="senha">Esqueci a senha</a>
+        </div>
+    </form>
+</div>
+
+<!-- Inclua os scripts do Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Inclua os scripts do FontAwesome -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+
+<script>
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("password");
+        var icon = document.querySelector('.show-password-icon i');
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        } else {
+            passwordInput.type = "password";
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        }
+    }
+
+    function removeSpaces(input) {
+        // Remove espaços da entrada
+        input.value = input.value.replace(/\s/g, "");
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+    var usernameInput = document.getElementById("username");
+    var passwordInput = document.getElementById("password");
+
+    usernameInput.addEventListener("input", function () {
+        // Remove espaços e símbolos especiais usando uma expressão regular
+        this.value = this.value.replace(/[^\w]/g, "").toLowerCase();
+    });
+
+    passwordInput.addEventListener("keydown", function (e) {
+        // Impede a entrada de espaços
+        if (e.key === " ") {
+            e.preventDefault();
+        }
+
+        // Limita o comprimento da senha para 30 caracteres
+        if (this.value.length >= 30 && e.key !== "Backspace") {
+            e.preventDefault();
+        }
+    });
+});
+</script>
+
+</body>
+</html>
