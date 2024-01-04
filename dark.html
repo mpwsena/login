@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wexclusif</title>
+
+    <!-- Inclua as folhas de estilo do Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Inclua as folhas de estilo do FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #4e4e4e; /* Dark Grayish */
+            color: #fff; /* White */
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #333; /* Dark Grayish */
+            border-radius: 8px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 470px;
+            user-select: none;
+        }
+
+        .login-container h2 {
+            color: #fff; /* White */
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-align: start;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #ccc; /* Light Gray */
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #555; /* Dark Gray */
+            border-radius: 4px;
+            background-color: #444; /* Gray */
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            color: #fff; /* White */
+        }
+
+        .form-group input:focus {
+            border-color: #4CAF50; /* Green */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            background-color: #444; /* Gray */
+            color: #fff; /* White */
+        }
+
+        .show-password-icon {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #888; /* Gray */
+        }
+
+        .login-btn {
+            background-color: #4CAF50; /* Green */
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: block;
+            width: 30%;
+        }
+
+        .login-btn:hover {
+            background-color: #45a049; /* Darker Green */
+        }
+
+        .form-group.forgot-password {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            color: #ccc; /* Light Gray */
+            text-align: right;
+            margin-top: 30px;
+            text-decoration: none;
+            user-select: none;
+        }
+
+        #senha {
+            text-decoration: none;
+            color: #ccc;
+            transition: color 0.3s ease;
+        }
+
+        #senha:hover {
+            color: #45a049; /* Darker Green */
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Faça o seu Login</h2>
+    <form onsubmit="return loginUser()">
+        <div class="form-group">
+            <label for="username">Usuário:</label>
+            <input type="text" id="username" class="form-control" required autocomplete="off" spellcheck="false">
+        </div>
+        <div class="form-group">
+            <label for="password">Senha:</label>
+            <div class="position-relative">
+                <input type="password" id="password" class="form-control" required>
+                <span class="show-password-icon" onclick="togglePasswordVisibility()">
+                    <i class="fas fa-eye"></i>
+                </span>
+            </div>
+        </div>
+        <div class="form-group forgot-password">
+            <button type="submit" class="btn btn-primary login-btn">Entrar</button>
+            <a href="#" id="senha">Esqueci a senha</a>
+        </div>
+    </form>
+</div>
+
+<!-- Inclua os scripts do Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Inclua os scripts do FontAwesome -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+
+<script>
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("password");
+        var icon = document.querySelector('.show-password-icon i');
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        } else {
+            passwordInput.type = "password";
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        }
+    }
+
+    function loginUser() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        // Exemplo de verificação simples
+        if (username === "mpwsena" && password === "#Am5pthk") {
+            window.location.href = "monokai.html";
+            return false;
+        } else {
+            alert("Usuário ou senha incorretos");
+            return false;
+        }
+
+        if (username === "adriana" && password === "flor") {
+            window.location.href = "monokai.html";
+            return false;
+        } else {
+            alert("Usuário ou senha incorretos");
+            return false;
+        }
+        
+    }
+
+    function removeSpaces(input) {
+        input.value = input.value.replace(/\s/g, "");
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var usernameInput = document.getElementById("username");
+        var passwordInput = document.getElementById("password");
+        
+        usernameInput.addEventListener("input", function() {
+            this.value = this.value.replace(/[^\w]/g, "").toLowerCase();
+        });
+
+        passwordInput.addEventListener("keydown", function(e) {
+            if (e.key === " ") {
+                e.preventDefault();
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
