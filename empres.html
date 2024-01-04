@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#0001</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: #000;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .login-container {
+            position: relative;
+            background-color: #000;
+            border-color: #00ff00;
+            border-width: 3px;
+            border-style: solid;
+            border-radius: 20px;
+            box-shadow: 0px 0px 20px rgba(0, 255, 0, 0.1);
+            padding: 40px;
+            width: 470px;
+            height: 439px;
+            user-select: none;
+            overflow: hidden;
+        }
+
+        .login-container::before,
+        .login-container::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            animation: matrixGlow 2s linear infinite alternate;
+        }
+
+        .login-container::before {
+            background: linear-gradient(to right, #00ff00, #008000);
+            z-index: -1;
+        }
+
+        .login-container::after {
+            background: linear-gradient(to right, #008000, #00ff00);
+            z-index: -2;
+        }
+
+        @keyframes matrixGlow {
+            0% {
+                filter: blur(10px);
+            }
+
+            100% {
+                filter: blur(20px);
+            }
+        }
+
+        .login-container h2 {
+            color: #00ff00;
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-align: start;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #00ff00;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #00ff00;
+            border-radius: 4px;
+            background-color: #000;
+            font-size: 16px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+            color: #00ff00;
+            font-family: 'Courier New';
+        }
+
+        .form-group input:focus {
+            border: 2px solid #00ff00;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.1);
+            background-color: #000;
+            color: #00ff00;
+        }
+
+        .login-btn {
+            background-color: #008000;
+            color: #00ff00;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: block;
+            width: 30%;
+        }
+
+        .login-btn:hover {
+            background-color: #004d00;
+        }
+
+        .forgot-password {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            color: #008000;
+            text-align: right;
+            text-decoration: none;
+            user-select: none;
+        }
+
+        #senha {
+            text-decoration: none;
+            color: #00ff00;
+            transition: color 0.3s ease;
+        }
+
+        #senha:hover {
+            color: #008000;
+        }
+
+        /* Rodapé */
+        .footer {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #00ff00;
+            font-size: 14px;
+        }
+
+        .texto-rodape {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            margin: auto;
+            opacity: 50%;
+            font-size: 18px;
+            font-family: 'Courier New';
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container">
+        <h2 id="greeting"></h2>
+        <form>
+            <div class="form-group">
+                <label for="username">Usuário:</label>
+                <input type="text" id="username" class="form-control" maxlength="20" required autocomplete="off"
+                    spellcheck="false">
+            </div>
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" class="form-control" required>
+            </div>
+            <div class="form-group forgot-password">
+                <button type="submit" class="btn btn-primary login-btn">Entrar</button>
+                <a href="#" id="senha">Esqueci a senha</a>
+            </div>
+        </form>
+        <div class="footer">
+            <p class="texto-rodape">Desenvolvido por Wexclusif</p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <script>
+        function getGreeting() {
+            var now = new Date();
+            var hours = now.getHours();
+            if (hours >= 6 && hours < 12) {
+                return "Bom dia!";
+            } else if (hours >= 12 && hours < 18) {
+                return "Boa tarde!";
+            } else {
+                return "Boa noite!";
+            }
+        }
+
+        document.getElementById("greeting").innerText = getGreeting();
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var usernameInput = document.getElementById("username");
+
+            usernameInput.addEventListener("input", function () {
+                if (this.value.length === 0) {
+                    this.style.borderColor = "#00ff00";
+                } else {
+                    this.style.borderColor = "#008000";
+                }
+                this.value = this.value.replace(/[^\w]/g, "").toLowerCase();
+            });
+
+            var passwordInput = document.getElementById("password");
+
+            passwordInput.addEventListener("input", function () {
+                if (this.value.length === 0) {
+                    this.style.borderColor = "#00ff00";
+                } else {
+                    this.style.borderColor = "#008000";
+                }
+            });
+
+            passwordInput.addEventListener("keydown", function (e) {
+                if (e.key === " ") {
+                    e.preventDefault();
+                }
+
+                if (this.value.length >= 20 && e.key !== "Backspace") {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
